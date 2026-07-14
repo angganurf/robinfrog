@@ -1,0 +1,966 @@
+{
+  "address": "EkpLmdmEjD3Z8xRpMyGAfc7toh5PEAfW2ot3c1zGeTnB",
+  "metadata": {
+    "name": "btc_prediction",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Solana BTC 5-Minute Prediction Market - Pari-Mutuel Binary Options"
+  },
+  "instructions": [
+    {
+      "name": "claim_payout",
+      "docs": [
+        "Claim payout for a winning bet"
+      ],
+      "discriminator": [
+        127,
+        240,
+        132,
+        62,
+        227,
+        198,
+        146,
+        133
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "market",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market.authority",
+                "account": "MarketState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "epoch",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  112,
+                  111,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "epoch.epoch_id",
+                "account": "Epoch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_bet",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "epoch"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "epoch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_market",
+      "docs": [
+        "Initialize the prediction market with configuration"
+      ],
+      "discriminator": [
+        35,
+        35,
+        189,
+        193,
+        155,
+        48,
+        170,
+        203
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "market",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "platform_fee_bps",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "lock_epoch",
+      "docs": [
+        "Lock the epoch — no more bets accepted (permissionless after lock_time)"
+      ],
+      "discriminator": [
+        215,
+        252,
+        192,
+        55,
+        121,
+        232,
+        244,
+        134
+      ],
+      "accounts": [
+        {
+          "name": "caller",
+          "docs": [
+            "Anyone can call this (permissionless) once the lock time has passed"
+          ],
+          "signer": true
+        },
+        {
+          "name": "market",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market.authority",
+                "account": "MarketState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "epoch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  112,
+                  111,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "epoch.epoch_id",
+                "account": "Epoch"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "place_bet",
+      "docs": [
+        "Place a bet (UP or DOWN) during the betting window"
+      ],
+      "discriminator": [
+        222,
+        62,
+        67,
+        220,
+        63,
+        166,
+        126,
+        33
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "market",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market.authority",
+                "account": "MarketState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "epoch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  112,
+                  111,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "epoch.epoch_id",
+                "account": "Epoch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_bet",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "epoch"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "epoch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "direction",
+          "type": {
+            "defined": {
+              "name": "BetDirection"
+            }
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "resolve_epoch",
+      "docs": [
+        "Resolve the epoch with the final price from oracle"
+      ],
+      "discriminator": [
+        127,
+        233,
+        72,
+        190,
+        252,
+        134,
+        239,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "resolver",
+          "docs": [
+            "Keeper bot or authority resolves the epoch"
+          ],
+          "signer": true
+        },
+        {
+          "name": "market",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market.authority",
+                "account": "MarketState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "epoch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  112,
+                  111,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "epoch.epoch_id",
+                "account": "Epoch"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "end_price",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "start_epoch",
+      "docs": [
+        "Start a new epoch (called by keeper or permissionless after previous epoch resolved)"
+      ],
+      "discriminator": [
+        204,
+        248,
+        232,
+        82,
+        251,
+        45,
+        164,
+        113
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "market",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market.authority",
+                "account": "MarketState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "epoch",
+          "writable": true
+        },
+        {
+          "name": "vault",
+          "docs": [
+            "Vault PDA that holds all betting funds for this epoch"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "epoch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "start_price",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Epoch",
+      "discriminator": [
+        93,
+        83,
+        120,
+        89,
+        151,
+        138,
+        152,
+        108
+      ]
+    },
+    {
+      "name": "MarketState",
+      "discriminator": [
+        0,
+        125,
+        123,
+        215,
+        95,
+        96,
+        164,
+        194
+      ]
+    },
+    {
+      "name": "UserBet",
+      "discriminator": [
+        180,
+        131,
+        8,
+        241,
+        60,
+        243,
+        46,
+        63
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "FeeTooHigh",
+      "msg": "Platform fee exceeds maximum allowed (5%)"
+    },
+    {
+      "code": 6001,
+      "name": "MarketNotActive",
+      "msg": "Market is not active"
+    },
+    {
+      "code": 6002,
+      "name": "EpochNotBetting",
+      "msg": "Epoch is not in betting phase"
+    },
+    {
+      "code": 6003,
+      "name": "EpochNotReadyToLock",
+      "msg": "Epoch is not ready to be locked"
+    },
+    {
+      "code": 6004,
+      "name": "EpochNotReadyToResolve",
+      "msg": "Epoch is not ready to be resolved"
+    },
+    {
+      "code": 6005,
+      "name": "EpochAlreadyResolved",
+      "msg": "Epoch is already resolved"
+    },
+    {
+      "code": 6006,
+      "name": "EpochNotResolved",
+      "msg": "Epoch is not resolved yet"
+    },
+    {
+      "code": 6007,
+      "name": "BetTooSmall",
+      "msg": "Bet amount is below minimum (0.01 SOL)"
+    },
+    {
+      "code": 6008,
+      "name": "AlreadyClaimed",
+      "msg": "Bet has already been claimed"
+    },
+    {
+      "code": 6009,
+      "name": "NotAWinner",
+      "msg": "User did not win this epoch"
+    },
+    {
+      "code": 6010,
+      "name": "MathOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6011,
+      "name": "InsufficientVaultFunds",
+      "msg": "Insufficient funds in vault"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidOraclePrice",
+      "msg": "Invalid oracle price"
+    },
+    {
+      "code": 6013,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    }
+  ],
+  "types": [
+    {
+      "name": "BetDirection",
+      "docs": [
+        "Direction of a bet"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Up"
+          },
+          {
+            "name": "Down"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Epoch",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "epoch_id",
+            "docs": [
+              "Unique epoch identifier"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "market",
+            "docs": [
+              "Reference to the parent market"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "start_time",
+            "docs": [
+              "Unix timestamp when this epoch started"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "lock_time",
+            "docs": [
+              "Unix timestamp when betting locks (start_time + 150s)"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "docs": [
+              "Unix timestamp when epoch ends (start_time + 300s)"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "start_price",
+            "docs": [
+              "BTC price at epoch start (scaled by 10^8)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "end_price",
+            "docs": [
+              "BTC price at epoch end (scaled by 10^8)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "total_up_amount",
+            "docs": [
+              "Total lamports bet on UP"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "total_down_amount",
+            "docs": [
+              "Total lamports bet on DOWN"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "total_bets",
+            "docs": [
+              "Total number of individual bets placed"
+            ],
+            "type": "u32"
+          },
+          {
+            "name": "status",
+            "docs": [
+              "Current lifecycle status"
+            ],
+            "type": {
+              "defined": {
+                "name": "EpochStatus"
+              }
+            }
+          },
+          {
+            "name": "result",
+            "docs": [
+              "Outcome after resolution"
+            ],
+            "type": {
+              "defined": {
+                "name": "EpochResult"
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump seed"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EpochResult",
+      "docs": [
+        "Result of an epoch after resolution"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Up"
+          },
+          {
+            "name": "Down"
+          },
+          {
+            "name": "Draw"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EpochStatus",
+      "docs": [
+        "Status of an epoch in its lifecycle"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Betting"
+          },
+          {
+            "name": "Locked"
+          },
+          {
+            "name": "Resolved"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "docs": [
+              "Authority who can manage the market"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "current_epoch_id",
+            "docs": [
+              "Current epoch ID (auto-incrementing counter)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "platform_fee_bps",
+            "docs": [
+              "Platform fee in basis points (e.g., 200 = 2%)"
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "Treasury wallet that receives platform fees"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "is_active",
+            "docs": [
+              "Whether the market is active (kill switch)"
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump seed"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserBet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "docs": [
+              "The user who placed this bet"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "epoch",
+            "docs": [
+              "Reference to the epoch this bet belongs to"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "direction",
+            "docs": [
+              "Direction of the bet (Up or Down)"
+            ],
+            "type": {
+              "defined": {
+                "name": "BetDirection"
+              }
+            }
+          },
+          {
+            "name": "amount",
+            "docs": [
+              "Amount bet in lamports"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "claimed",
+            "docs": [
+              "Whether payout has been claimed"
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "timestamp",
+            "docs": [
+              "Timestamp when bet was placed"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump seed"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
