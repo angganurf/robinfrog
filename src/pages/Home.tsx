@@ -1,3 +1,4 @@
+import { Ban, Flame, Lock } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -144,34 +145,116 @@ export default function Home() {
 
 	return (
 		<>
-			{/* Banner */}
-			<div className="w-full mb-4 border-4 border-black rounded-3xl text-center cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group">
-				<img
-					src="/new-assets/banner.jpeg"
-					alt="Gifme Banner"
-					className="w-full rounded-3xl"
-				/>
-			</div>
+			<div className="flex flex-col gap-10">
+			{/* 1. Hero Section */}
+			<div className="flex flex-col items-center gap-6">
+				{/* Banner */}
+				<div className="w-full border-4 border-black rounded-3xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+					<img
+						src="/new-assets/banner.jpeg"
+						alt="RobinFrog Banner"
+						className="w-full object-cover"
+					/>
+				</div>
 
-			{/* Contract address */}
-			<div className="relative mb-4">
+				{/* Title and Description */}
+				<div className="text-center space-y-4 px-2 sm:px-4 mt-2">
+					<h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-widest uppercase">
+						RobinFrog
+					</h1>
+					<p className="text-base sm:text-xl font-bold bg-white border-4 border-black p-4 sm:p-6 rounded-3xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-3xl mx-auto">
+						The chaotic little blob with big dreams, bigger eyes, and endless curiosity. Here to bring fun, memes, and positive vibes to the community.
+					</p>
+				</div>
+
+				{/* Contract address */}
 				<div
-					className="bg-white border-4 border-black rounded-3xl p-4 text-center cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group"
+					className="w-full max-w-4xl mt-6 cursor-pointer px-2"
 					onClick={copyToClipboard}
 					onMouseEnter={playHoverSound}
 				>
-					<div className="flex items-center justify-center gap-2 flex-wrap ">
-						<code className="font-bold sm:text-2xl break-all">
-							CA :{" "}
-							{copied ? "Copied to clipboard! 🎉" : contractAddress + " 📋"}
+					<div className="bg-white border-4 border-black rounded-2xl p-4 sm:p-5 text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-2 active:shadow-none transition-all">
+						<code className="font-black text-sm sm:text-2xl break-all">
+							CA: {copied ? "COPIED TO CLIPBOARD! 🎉" : contractAddress}
 						</code>
+					</div>
+				</div>
+
+				{/* CTA Buttons */}
+				<div className="flex justify-center w-full px-2 mt-4 mb-2">
+					<a
+						href="#"
+						className="w-1/2 text-center bg-yellow-400 text-black border-4 border-black rounded-full px-4 py-3 sm:py-4 text-xl sm:text-2xl font-black uppercase shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-2 active:shadow-none transition-all"
+						onMouseEnter={playHoverSound}
+					>
+						Buy $FROB
+					</a>
+				</div>
+			</div>
+
+			{/* 2. About Section */}
+			<div className="bg-white border-4 border-black rounded-3xl p-6 sm:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center gap-8 mt-6">
+				<div className="w-full md:w-1/3 flex justify-center">
+					<div className="border-4 border-black rounded-3xl overflow-hidden bg-[#85C905] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-all duration-300">
+						<img
+							src="/new-assets/1.gif"
+							alt="RobinFrog Profile"
+							className="w-full max-w-[280px] aspect-square object-cover"
+						/>
+					</div>
+				</div>
+				<div className="w-full md:w-2/3 space-y-6 text-center md:text-left">
+					<h2 className="text-4xl sm:text-6xl font-black uppercase drop-shadow-[2px_2px_0px_rgba(0,0,0,0.2)] tracking-wide">
+						Who is RobinFrog?
+					</h2>
+					<div className="space-y-4 text-lg sm:text-xl font-bold leading-relaxed">
+						<p>
+							RobinFrog isn't just another frog on the pond. This chaotic little blob is here to revolutionize the meme economy! With big dreams and even bigger eyes, RobinFrog brings endless curiosity to the blockchain.
+						</p>
+						<p className="bg-yellow-200 inline-block px-2 transform -rotate-1 border-2 border-black">
+							Join the movement. Share the memes. Spread the positive vibes. We're all gonna make it (ribbit)!
+						</p>
 					</div>
 				</div>
 			</div>
 
-			{/* Image gallery */}
-			<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-4 sm:p-8">
-				<div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+			{/* 3. Tokenomics Section */}
+			<div className="mt-8">
+				<h2 className="text-5xl sm:text-7xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-center mb-8 uppercase tracking-wider">
+					Frogonomics
+				</h2>
+				<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+					<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-8 text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+						<div className="mb-6 flex justify-center drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]"><Ban size={72} strokeWidth={2.5} color="white" /></div>
+						<h3 className="text-4xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-wide">0% TAX</h3>
+						<p className="font-bold text-xl text-black bg-white rounded-xl py-2 px-4 mt-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+							No bullshit.
+						</p>
+					</div>
+					<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-8 text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+						<div className="mb-6 flex justify-center drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]"><Flame size={72} strokeWidth={2.5} color="white" /></div>
+						<h3 className="text-4xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-wide">LP BURNED</h3>
+						<p className="font-bold text-xl text-black bg-white rounded-xl py-2 px-4 mt-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+							Safe & Secure.
+						</p>
+					</div>
+					<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-8 text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+						<div className="mb-6 flex justify-center drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]"><Lock size={72} strokeWidth={2.5} color="white" /></div>
+						<h3 className="text-4xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-wide">REVOKED</h3>
+						<p className="font-bold text-xl text-black bg-white rounded-xl py-2 px-4 mt-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+							Mint & Freeze.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			{/* 4. Image gallery */}
+			<div className="mt-8">
+				<h2 className="text-5xl sm:text-7xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-center mb-8 uppercase tracking-wider">
+					Robin's Stash
+				</h2>
+				<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-4 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+					<div className="flex flex-wrap justify-center gap-2 sm:gap-3">
 					{imageUrls.map((url, index) => (
 						<button
 							key={index}
@@ -216,10 +299,30 @@ export default function Home() {
 					))}
 				</div>
 			</div>
-			<span className="text-[#5F9632] mt-6 block text-center">
-				[ Stay tuned for more frogs...! ]
-			</span>
+		</div>
 
+		{/* 5. Footer */}
+		<div className="mt-16 mb-8 text-center space-y-6">
+				<div className="flex justify-center gap-4">
+					<a
+						href="https://x.com/RobinFrog_"
+						target="_blank"
+						className="bg-black text-white border-4 border-black rounded-2xl p-4 hover:bg-white hover:text-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]"
+						onMouseEnter={playHoverSound}
+					>
+						<svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+							<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+						</svg>
+					</a>
+				</div>
+				<span className="text-black font-black text-2xl block uppercase tracking-wide">
+					[ Stay tuned for more frogs...! ]
+				</span>
+				<p className="text-sm sm:text-base font-bold text-black/70 max-w-3xl mx-auto px-4 bg-white/30 p-4 rounded-xl border-2 border-black/20">
+					$FROB is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely useless and for entertainment purposes only.
+				</p>
+			</div>
+		</div>
 			{/* Confetti Effect */}
 			{showConfetti && (
 				<div className="fixed inset-0 pointer-events-none z-50">
