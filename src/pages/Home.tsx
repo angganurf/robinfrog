@@ -152,7 +152,7 @@ export default function Home() {
 				<div className="w-full border-4 border-black rounded-3xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
 					<img
 						src="/new-assets/banner.jpeg"
-						alt="RobinFrog Banner"
+						alt="ProgonPons Banner"
 						className="w-full object-cover"
 					/>
 				</div>
@@ -160,7 +160,7 @@ export default function Home() {
 				{/* Title and Description */}
 				<div className="text-center space-y-4 px-2 sm:px-4 mt-2">
 					<h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-widest uppercase">
-						RobinFrog
+						ProgonPons
 					</h1>
 					<p className="text-base sm:text-xl font-bold bg-white border-4 border-black p-4 sm:p-6 rounded-3xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-3xl mx-auto">
 						The chaotic little blob with big dreams, bigger eyes, and endless curiosity. Here to bring fun, memes, and positive vibes to the community.
@@ -187,7 +187,7 @@ export default function Home() {
 						className="w-1/2 text-center bg-yellow-400 text-black border-4 border-black rounded-full px-4 py-3 sm:py-4 text-xl sm:text-2xl font-black uppercase shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-2 active:shadow-none transition-all"
 						onMouseEnter={playHoverSound}
 					>
-						Buy $FROB
+						Buy $PROG
 					</a>
 				</div>
 			</div>
@@ -198,18 +198,18 @@ export default function Home() {
 					<div className="border-4 border-black rounded-3xl overflow-hidden bg-[#85C905] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-all duration-300">
 						<img
 							src="/new-assets/1.gif"
-							alt="RobinFrog Profile"
+							alt="ProgonPons Profile"
 							className="w-full max-w-[280px] aspect-square object-cover"
 						/>
 					</div>
 				</div>
 				<div className="w-full md:w-2/3 space-y-6 text-center md:text-left">
 					<h2 className="text-4xl sm:text-6xl font-black uppercase drop-shadow-[2px_2px_0px_rgba(0,0,0,0.2)] tracking-wide">
-						Who is RobinFrog?
+						Who is ProgonPons?
 					</h2>
 					<div className="space-y-4 text-lg sm:text-xl font-bold leading-relaxed">
 						<p>
-							RobinFrog isn't just another frog on the pond. This chaotic little blob is here to revolutionize the meme economy! With big dreams and even bigger eyes, RobinFrog brings endless curiosity to the blockchain.
+							ProgonPons isn't just another frog on the pond. This chaotic little blob is here to revolutionize the meme economy! With big dreams and even bigger eyes, ProgonPons brings endless curiosity to the blockchain.
 						</p>
 						<p className="bg-yellow-200 inline-block px-2 transform -rotate-1 border-2 border-black">
 							Join the movement. Share the memes. Spread the positive vibes. We're all gonna make it (ribbit)!
@@ -221,7 +221,7 @@ export default function Home() {
 			{/* 3. Tokenomics Section */}
 			<div className="mt-8">
 				<h2 className="text-5xl sm:text-7xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-center mb-8 uppercase tracking-wider">
-					Frogonomics
+					Progonomics
 				</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
 					<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-8 text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
@@ -251,7 +251,7 @@ export default function Home() {
 			{/* 4. Image gallery */}
 			<div className="mt-8">
 				<h2 className="text-5xl sm:text-7xl font-black text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-center mb-8 uppercase tracking-wider">
-					Robin's Stash
+					Progon's Stash
 				</h2>
 				<div className="bg-[#5F9632] border-4 border-black rounded-3xl p-4 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
 					<div className="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -305,7 +305,7 @@ export default function Home() {
 		<div className="mt-16 mb-8 text-center space-y-6">
 				<div className="flex justify-center gap-4">
 					<a
-						href="https://x.com/RobinFrog_"
+						href="https://x.com/ProgonPons"
 						target="_blank"
 						className="bg-black text-white border-4 border-black rounded-2xl p-4 hover:bg-white hover:text-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]"
 						onMouseEnter={playHoverSound}
@@ -314,12 +314,22 @@ export default function Home() {
 							<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
 						</svg>
 					</a>
+					<a
+						href="https://pin.it/1WiTmyyxx"
+						target="_blank"
+						className="bg-[#E60023] text-white border-4 border-black rounded-2xl p-4 hover:bg-white hover:text-[#E60023] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]"
+						onMouseEnter={playHoverSound}
+					>
+						<svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+							<path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.4 7.63 11.13-.1-.95-.2-2.4.04-3.43.22-.93 1.4-5.93 1.4-5.93s-.35-.7-.35-1.74c0-1.63.95-2.85 2.13-2.85 1 0 1.48.75 1.48 1.65 0 1.01-.65 2.52-.98 3.92-.28 1.17.58 2.12 1.73 2.12 2.08 0 3.68-2.2 3.68-5.37 0-2.8-2.02-4.77-4.9-4.77-3.33 0-5.29 2.5-5.29 5.08 0 1.01.39 2.08.88 2.68.1.12.1.22.08.33-.1.38-.3.12-.34-.14-.4-.36-1.04-1.5-1.04-3.07 0-3.76 2.73-7.22 7.89-7.22 4.14 0 7.36 2.95 7.36 6.9 0 4.12-2.6 7.43-6.2 7.43-1.21 0-2.35-.63-2.74-1.37l-.75 2.85c-.27 1.04-1 2.35-1.49 3.14C10.72 23.82 11.35 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z" />
+						</svg>
+					</a>
 				</div>
 				<span className="text-black font-black text-2xl block uppercase tracking-wide">
 					[ Stay tuned for more frogs...! ]
 				</span>
 				<p className="text-sm sm:text-base font-bold text-black/70 max-w-3xl mx-auto px-4 bg-white/30 p-4 rounded-xl border-2 border-black/20">
-					$FROB is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely useless and for entertainment purposes only.
+					$PROG is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely useless and for entertainment purposes only.
 				</p>
 			</div>
 		</div>

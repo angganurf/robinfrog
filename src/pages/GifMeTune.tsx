@@ -21,6 +21,19 @@ import {
 	ExternalLink,
 } from "lucide-react";
 
+const Pinterest = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width={size}
+		height={size}
+		viewBox="0 0 24 24"
+		fill="currentColor"
+		className={className}
+	>
+		<path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.4 7.63 11.13-.1-.95-.2-2.4.04-3.43.22-.93 1.4-5.93 1.4-5.93s-.35-.7-.35-1.74c0-1.63.95-2.85 2.13-2.85 1 0 1.48.75 1.48 1.65 0 1.01-.65 2.52-.98 3.92-.28 1.17.58 2.12 1.73 2.12 2.08 0 3.68-2.2 3.68-5.37 0-2.8-2.02-4.77-4.9-4.77-3.33 0-5.29 2.5-5.29 5.08 0 1.01.39 2.08.88 2.68.1.12.1.22.08.33-.1.38-.3.12-.34-.14-.4-.36-1.04-1.5-1.04-3.07 0-3.76 2.73-7.22 7.89-7.22 4.14 0 7.36 2.95 7.36 6.9 0 4.12-2.6 7.43-6.2 7.43-1.21 0-2.35-.63-2.74-1.37l-.75 2.85c-.27 1.04-1 2.35-1.49 3.14C10.72 23.82 11.35 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z" />
+	</svg>
+);
+
 export default function GifMeTune() {
 	const [typedCommand, setTypedCommand] = useState("");
 	const [visibleLines, setVisibleLines] = useState(0);
@@ -593,10 +606,20 @@ export default function GifMeTune() {
 								<Github size={20} />
 							</a>
 							<a
-								href="https://x.com/RobinFrog_"
+								href="https://x.com/ProgonPons"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="text-gray-400 hover:text-[#d4af37] transition-colors"
 							>
 								<Twitter size={20} />
+							</a>
+							<a
+								href="https://pin.it/1WiTmyyxx"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-gray-400 hover:text-[#E60023] transition-colors"
+							>
+								<Pinterest size={20} />
 							</a>
 							<a
 								href="#"

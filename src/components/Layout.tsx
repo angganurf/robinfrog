@@ -101,7 +101,7 @@ export default function Layout() {
 											GifMeTune
 										</Link>
 										<Link
-											to="https://bags.RobinFrog.fun/"
+											to="https://bags.ProgonPons.fun/"
 											target="_blank"
 											className="px-4 py-3 hover:bg-[#85C905] hover:text-white font-bold text-black transition-colors"
 											onMouseEnter={playHoverSound}
@@ -115,19 +115,29 @@ export default function Layout() {
 
 						{/* <a
 							target="_blank"
-							href={`https://game.RobinFrog.fun`}
+							href={`https://game.ProgonPons.fun`}
 							className="bg-black text-white px-2 py-1 rounded-full text-xs sm:text-sm font-bold transition-transform hover:scale-105 active:scale-95"
 							onMouseEnter={playHoverSound}
 						>
 							<img src="/assets/game.png" alt="Game" className="w-8" />
 						</a> */}
 						<a
-							href="https://x.com/RobinFrog_"
+							href="https://x.com/ProgonPons"
 							target="_blank"
 							className="bg-black text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-transform hover:scale-105 active:scale-95"
 							onMouseEnter={playHoverSound}
 						>
 							<img src="/assets/x.png" alt="Gifme Banner" className="w-6" />
+						</a>
+						<a
+							href="https://pin.it/1WiTmyyxx"
+							target="_blank"
+							className="bg-[#E60023] text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-transform hover:scale-105 active:scale-95 flex items-center justify-center"
+							onMouseEnter={playHoverSound}
+						>
+							<svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+								<path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.4 7.63 11.13-.1-.95-.2-2.4.04-3.43.22-.93 1.4-5.93 1.4-5.93s-.35-.7-.35-1.74c0-1.63.95-2.85 2.13-2.85 1 0 1.48.75 1.48 1.65 0 1.01-.65 2.52-.98 3.92-.28 1.17.58 2.12 1.73 2.12 2.08 0 3.68-2.2 3.68-5.37 0-2.8-2.02-4.77-4.9-4.77-3.33 0-5.29 2.5-5.29 5.08 0 1.01.39 2.08.88 2.68.1.12.1.22.08.33-.1.38-.3.12-.34-.14-.4-.36-1.04-1.5-1.04-3.07 0-3.76 2.73-7.22 7.89-7.22 4.14 0 7.36 2.95 7.36 6.9 0 4.12-2.6 7.43-6.2 7.43-1.21 0-2.35-.63-2.74-1.37l-.75 2.85c-.27 1.04-1 2.35-1.49 3.14C10.72 23.82 11.35 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z" />
+							</svg>
 						</a>
 						{/* <a
 							target="_blank"
