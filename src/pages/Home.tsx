@@ -181,7 +181,7 @@ export default function Home() {
 				</div>
 
 				{/* CTA Buttons */}
-				<div className="flex justify-center w-full px-2 mt-4 mb-2">
+				{/* <div className="flex justify-center w-full px-2 mt-4 mb-2">
 					<a
 						href="https://bags.fm/0x594F94d3A62373A810258f5d0938181a45f13efa"
 						className="w-1/2 text-center bg-yellow-400 text-black border-4 border-black rounded-full px-4 py-3 sm:py-4 text-xl sm:text-2xl font-black uppercase shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-2 active:shadow-none transition-all"
@@ -190,7 +190,7 @@ export default function Home() {
 					>
 						Buy $PROG
 					</a>
-				</div>
+				</div> */}
 			</div>
 
 			{/* 2. About Section */}
